@@ -1,6 +1,32 @@
 # data
 ScalaTion Dataset Collection
 
+This repository contains a collection of datasets that are used in ScalaTion. The datasets are organized under 5 sub categories. They are
+
+- analytics
+- graphanalytics
+- linalgebra
+- relalgebra
+- tableau
+
+Datasets can be downloaded via the `.download.sh` script in the main scalation data directory. See below for usage.
+
+## Installation
+```sh
+# If scalation is not installed
+$ git clone https://github.com/scalation/scalation.git
+
+# Go to the scalation data directory
+$ cd scalation/data
+
+# Execute the download script with no arguments to download all datasets
+$ ./download.sh
+
+# If you would like only download a single category, then specify it as an argument
+$ ./download.sh linalgebra
+```
+
+
 ## Regression Datasets
 |Name|#rows|#attrs|Size|Description|Path|
 |----|------|-----|---------|-----|----|
