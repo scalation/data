@@ -1,4 +1,6 @@
 # data
+
+Please visit this GitHub[https://github.com/mh2t/covid] for more information.  
 ScalaTion Dataset Collection
 
 This repository contains a collection of datasets that are used in ScalaTion. The datasets are organized under 5 sub categories. They are
