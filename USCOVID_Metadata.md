@@ -1,3 +1,7 @@
+Introduction:  
+
+(Put them in a table). 
+
 date: The current date starting with 1/19/2020 to 1/14/2021.  
 death: The cumulative number of deaths.  
 deathIncrease: The number of new deaths on the given date.  
