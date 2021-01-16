@@ -2,6 +2,8 @@
 
 This repository contains daily time series data about COVID-19 in the United States. All data is read in from the daily case report, collected and maintained by **The COVID Tracking Project**. The meta-data for the data set is provided in the following.  
 
+## Meta-Data:  
+
  
 
 | Column                   | Description                                                      |
