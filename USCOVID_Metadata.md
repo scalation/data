@@ -28,4 +28,4 @@ This repository contains daily time series data about COVID-19 in the United Sta
 | totalTestResultsIncrease     | The number of total test results on the given date                                                 |
 | recovered                    | The cumulative number of recovered cases                                                           |
 
-\* The values on dates 5/26/2020, 6/4/2020, 10/6/2020 and 10/23/2020 were imputed by the average values of before and after the dates.  
+\*The values on dates 5/26/2020, 6/4/2020, 10/6/2020 and 10/23/2020 were imputed by the average values of before and after the dates.  
