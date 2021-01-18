@@ -29,3 +29,6 @@ This repository contains daily time series data about COVID-19 in the United Sta
 | recovered                    | The cumulative number of recovered cases                                                           |
 
 \*The values on dates 5/26/2020, 6/4/2020, 10/6/2020 and 10/23/2020 were imputed by the average values of before and after the dates.  
+
+## USCOVID_CLEANED
+Three values of deathIncrease, 15 values of hospitalizedIncrease, 14 values of negativeIncrease, and 5 values of positiveIncrease are treated as missing values and the values are replaced by using cubic spline interpolation technique.  
