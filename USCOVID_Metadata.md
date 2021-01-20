@@ -30,5 +30,5 @@ This repository contains daily time series data about COVID-19 in the United Sta
 
 \*The values on dates 5/26/2020, 6/4/2020, 10/6/2020 and 10/23/2020 were imputed by the average values of before and after the dates.  
 
-## USCOVID_CLEANED
-Three values of deathIncrease, 15 values of hospitalizedIncrease, 14 values of negativeIncrease, and 5 values of positiveIncrease are treated as missing values and the values are replaced by using cubic spline interpolation technique.  
+## CLEANED_USCOVID
+Three values of deathIncrease, 21 values of hospitalizedIncrease, 17 values of hospitalizedIncrease_alt, 19 values of negativeIncrease, 6 values of positiveIncrease, and 0 values of recovered are treated as missing values. The missing values are replaced by using cubic spline interpolation technique.  
