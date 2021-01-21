@@ -35,3 +35,8 @@ Three values of deathIncrease, 21 values of hospitalizedIncrease, 17 values of h
 
 ## USCOVID_BY_STATE
 The COVID-19 dataset expands upon USCOVID.CSV by splitting the data from the first one into counts for each state.
+
+## USNPI
+This dataset provides the U.S. Covid-19 Government Response Tracker.  
+Most indicators are recorded on an ordinal scale that represents the level of strictness of the policy. Four of the indicators (E3, E4, H4 and H5) are recorded as a US dollar value of fiscal spending.  
+This [cookbook](https://github.com/OxCGRT/covid-policy-tracker/blob/master/documentation/codebook.md) provides more information about each column.
