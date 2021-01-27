@@ -33,6 +33,9 @@ This repository contains daily time series data about COVID-19 in the United Sta
 ## CLEANED_USCOVID
 Three values of deathIncrease, 21 values of hospitalizedIncrease, 17 values of hospitalizedIncrease_alt, 19 values of negativeIncrease, 6 values of positiveIncrease, and 0 values of recovered are treated as missing values. The missing values are replaced by using cubic spline interpolation technique. 
 
+## CLEANED_USCOVID_KF
+Four values of deathIncrease, 24 values of hospitalizedIncrease, 0 values of hospitalizedCurrently, 19 values of negativeIncrease, 6 values of positiveIncrease, and 0 values of recovered are treated as missing values. The missing values are replaced by using Kalman smoothing.
+
 ## USCOVID_BY_STATE
 The COVID-19 dataset expands upon USCOVID.CSV by splitting the data from the first one into counts for each state.
 
