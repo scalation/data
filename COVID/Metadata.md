@@ -38,6 +38,10 @@ Observations within 3 standard deviations are left unchanged while the observati
 ## CLEANED_35.csv
 Similar to the above cleaned data, expect 3.5 standar deviations is used as a threshold instead of 3 standard deviations.
 
+## Eliminating early samples
+We eliminate the first 44 day records and feed our models time-series data starting February 26, 2020 when the first deaths due to COVID-19 in the United States were recorded.
+After eliminating the first 44 days, the new size of the time-series is 347 days.
+
 <!---## CLEANED_USCOVID_KF
 Four values of deathIncrease, 24 values of hospitalizedIncrease, 0 values of hospitalizedCurrently, 19 values of negativeIncrease, 6 values of positiveIncrease, and 0 values of recovered are treated as missing values. The missing values are replaced by using Kalman smoothing. -->
 
