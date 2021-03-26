@@ -8,7 +8,7 @@ This repository contains daily time series data about COVID-19 in the United Sta
 
 | Column                       | Description                                                                                        |
 |------------------------------|----------------------------------------------------------------------------------------------------|
-| date                         | The current date starting with 1/19/2020 to 1/14/2021                                              |
+| date                         | The current date starting with 1/13/2020 to 2/6/2021                                              |
 | death                        | The cumulative number of deaths                                                                    |
 | deathIncrease                | The number of new deaths on the given date                                                         |
 | inIcuCumulative              | The cumulative number of patients in ICU                                                           |
@@ -26,18 +26,29 @@ This repository contains daily time series data about COVID-19 in the United Sta
 | states                       | The number of states reporting COVID-19 cases on the given date                                    |
 | totalTestResults             | The cumulative number of total test results                                                        |
 | totalTestResultsIncrease     | The number of total test results on the given date                                                 |
-| recovered                    | The cumulative number of recovered cases                                                           |
+<!---| recovered                    | The cumulative number of recovered cases                                                           |-->
 
-\*The values on dates 5/26/2020, 6/4/2020, 10/6/2020 and 10/23/2020 were imputed by the average values of before and after the dates.  
+<!---\*The values on dates 5/26/2020, 6/4/2020, 10/6/2020 and 10/23/2020 were imputed by the average values of before and after the dates.  -->
 
-## CLEANED_USCOVID
-Three values of deathIncrease, 21 values of hospitalizedIncrease, 17 values of hospitalizedIncrease_alt, 19 values of negativeIncrease, 6 values of positiveIncrease, and 0 values of recovered are treated as missing values. The missing values are replaced by using cubic spline interpolation technique. 
+## CLEANED_30.csv
+Data is preprocessed for smoothing the outliers that lie 3 standard deviations away from the rolling mean. 
+The rolling mean is the 6 time points local average such that we consider 3 time-points before and after the current point.
+Observations within 3 standard deviations are left unchanged while the observations which are considered as outliers are replaced by the Kalman Smoothing using a Local Level Model.
 
-## CLEANED_USCOVID_KF
-Four values of deathIncrease, 24 values of hospitalizedIncrease, 0 values of hospitalizedCurrently, 19 values of negativeIncrease, 6 values of positiveIncrease, and 0 values of recovered are treated as missing values. The missing values are replaced by using Kalman smoothing.
+## CLEANED_35.csv
+Similar to the above cleaned data, expect 3.5 standar deviations is used as a threshold instead of 3 standard deviations.
 
-## USCOVID_BY_STATE
-The COVID-19 dataset expands upon USCOVID.CSV by splitting the data from the first one into counts for each state.
+## Eliminating early samples
+We eliminate the first 44 day records and feed our models time-series data starting February 26, 2020 when the first deaths due to COVID-19 in the United States were recorded.
+After eliminating the first 44 days, the new size of the time-series is 347 days.
+
+## Train-Test Split in Rolling Validation
+The first 60% of the samples is taken as the training set and rest as the test set.
+<!---## CLEANED_USCOVID_KF
+Four values of deathIncrease, 24 values of hospitalizedIncrease, 0 values of hospitalizedCurrently, 19 values of negativeIncrease, 6 values of positiveIncrease, and 0 values of recovered are treated as missing values. The missing values are replaced by using Kalman smoothing. -->
+
+<!---## USCOVID_BY_STATE
+The COVID-19 dataset expands upon USCOVID.CSV by splitting the data from the first one into counts for each state.-->
 
 ## USNPI
 This dataset provides the U.S. Covid-19 Government Response Tracker.  
