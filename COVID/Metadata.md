@@ -36,7 +36,10 @@ The rolling mean is the 6 time points local average such that we consider 3 time
 Observations within 3 standard deviations are left unchanged while the observations which are considered as outliers are replaced by the Kalman Smoothing using a Local Level Model.
 
 ## CLEANED_35.csv
-Similar to the above cleaned data, expect 3.5 standar deviations is used as a threshold instead of 3 standard deviations.
+Similar to the above cleaned data, expect 3.5 standard deviations is used as a threshold instead of 3 standard deviations.
+
+## CLEANED_35_Updated.csv
+Similar to the CLEANED_35 data, with the inclusion of new data from 2/7/21 to 3/7/21.
 
 ## Eliminating early samples
 We eliminate the first 44 day records and feed our models time-series data starting February 26, 2020 when the first deaths due to COVID-19 in the United States were recorded.
@@ -44,6 +47,8 @@ After eliminating the first 44 days, the new size of the time-series is 347 days
 
 ## Train-Test Split in Rolling Validation
 The first 60% of the samples is taken as the training set and rest as the test set.
+For CLEANED_35_Updated dataset, we train from 2/26/2020 until 10/4/2020 (inclusive) having 222 samples. The test set starts from 10/2/2020 and ends at 3/7/2021 (inclusive) having 154 samples.
+
 <!---## CLEANED_USCOVID_KF
 Four values of deathIncrease, 24 values of hospitalizedIncrease, 0 values of hospitalizedCurrently, 19 values of negativeIncrease, 6 values of positiveIncrease, and 0 values of recovered are treated as missing values. The missing values are replaced by using Kalman smoothing. -->
 
