@@ -47,7 +47,7 @@ After eliminating the first 44 days, the new size of the time-series is 347 days
 
 ## Train-Test Split in Rolling Validation
 The first 60% of the samples is taken as the training set and rest as the test set.
-For CLEANED_35_Updated dataset, we train from 2/26/2020 until 10/4/2020 (inclusive) having 222 samples. The test set starts from 10/2/2020 and ends at 3/7/2021 (inclusive) having 154 samples.
+For CLEANED_35_Updated dataset, we train from 2/26/2020 until 10/4/2020 (inclusive) having 222 samples. The test set starts from 10/5/2020 and ends at 3/7/2021 (inclusive) having 154 samples.
 
 <!---## CLEANED_USCOVID_KF
 Four values of deathIncrease, 24 values of hospitalizedIncrease, 0 values of hospitalizedCurrently, 19 values of negativeIncrease, 6 values of positiveIncrease, and 0 values of recovered are treated as missing values. The missing values are replaced by using Kalman smoothing. -->
