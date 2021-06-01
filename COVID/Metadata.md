@@ -42,8 +42,8 @@ Similar to the above cleaned data, expect 3.5 standard deviations is used as a t
 Similar to the CLEANED_35 data, with the inclusion of new data from 2/7/21 to 3/7/21.
 
 ## Eliminating early samples
-We eliminate the first 43 day records and feed our models time-series data starting February 26, 2020 when the first deaths due to COVID-19 in the United States were recorded.
-After eliminating the first 43 days, the new size of the time-series is 347 days.
+We eliminate the first 44 day records and feed our models time-series data starting February 26, 2020 when the first deaths due to COVID-19 in the United States were recorded.
+After eliminating the first 44 days, the new size of the time-series is 376 days.
 
 ## Train-Test Split in Rolling Validation
 <!--The first 60% of the samples is taken as the training set and rest as the test set. -->
