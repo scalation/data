@@ -3,6 +3,7 @@ library(forecast)
 
 zero_reference = 18317 #Difference between 1970-01-01 to 2020-02-25
 
+ts_size = 376  # Number of Sample/Timesteps in entire time series
 tr_size = 222  # Number of Samples/Timesteps in Training set
 te_size = 154  # Number of Samples/Timesteps in Training set
 horizons = 14  # Number of days to forecast ahead in the future
@@ -71,7 +72,7 @@ for(i in 2:horizons){
 forecast_matrix <- t(forecast_matrix)
 
 # Get true values of the test data 
-test_data <- window(covid_ts, start = as.Date(223 + zero_reference), end = as.Date(376 + zero_reference), frequency = 1)
+test_data <- window(covid_ts, start = as.Date((tr_size+1) + zero_reference), end = as.Date(ts_size + zero_reference), frequency = 1)
 
 # Generate matrix to store smape scores for each horizon
 smape_scores = matrix(data = NA, nrow = horizons, ncol = 1)
