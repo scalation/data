@@ -6,7 +6,15 @@ zero_reference = 18317 #Difference between 1970-01-01 to 2020-02-25
 tr_size = 222
 te_size = 154
 horizons = 14
-kt = 5
+kt = 1
+rt = 0
+p = 1
+d = 0
+q = 0
+PP = 3
+DD = 1
+QQ = 1
+s = 7
 
 covid_data <- read.csv(file = "https://raw.githubusercontent.com/scalation/data/master/COVID/CLEANED_35_Updated.csv")
 
@@ -18,16 +26,25 @@ covid_data <- read.csv(file = "https://raw.githubusercontent.com/scalation/data/
 covid_ts <- zoo(covid_data$deathIncrease, seq(as.Date("2020-01-13"), as.Date("2021-03-07"), by = "days"), frequency=1)
 length(covid_ts)
 forecast_matrix <- matrix(data = c(-1.2),nrow = horizons, ncol = te_size)
-for(i in 1:te_size){
-  model_data <- window(covid_ts, start = as.Date(i+zero_reference), end = as.Date(221+zero_reference+i),  frequency=1)
-  arima_model <- Arima(y=model_data, order = c(1,0,0), seasonal = list(order=c(3,1,1),period=7), method="ML")
-  future <- forecast(arima_model,h=horizons, level = 0)
-  forecasts <- future$mean
-  for (k in 1:horizons) {
-    if(k+i-1 <= te_size){
-      forecast_matrix[k, k+i-1] = forecasts[k]
+for (i in 1:te_size) {
+    model_data <- window(covid_ts, start = as.Date(i+zero_reference), end = as.Date(221+zero_reference+i),  frequency=1)
+    # Retraining after kt samples
+    if (i == 1) {
+        arima_model <- Arima(y = model_data, order = c(p, d, q), seasonal = list(order = c(PP, DD, QQ), period = s), method = "ML")
     }
-  }
+    if ((i %% kt) == 0) {
+        rt = rt + 1
+        arima_model <- Arima(y = model_data, order = c(p, d, q), seasonal = list(order = c(PP, DD, QQ), period = s), method = "ML")
+    } else {
+        arima_model <- Arima(y = model_data, model = arima_model)
+    }
+    future <- forecast(arima_model, h = horizons, level = 0)
+    forecasts <- future$mean
+    for (k in 1:horizons) {
+        if(k+i-1 <= te_size){
+            forecast_matrix[k, k+i-1] = forecasts[k]
+        }
+    }
 }
 
 for(i in 2:horizons){
@@ -44,7 +61,8 @@ for (i in 1:horizons) {
   print(paste0("h=",i,",smape=",smape_scores[i,1]))
 }
 
-#In-sample
+
+#In-sample Analysis
 in_sample_data <- window(covid_ts, start = as.Date(1 + zero_reference), end = as.Date(376 + zero_reference), frequency = 1)
 in_ts <- as.ts(in_sample_data)
 in_sample_model <- Arima(y=in_sample_data, order = c(4,0,2), seasonal = list(order=c(0,0,0),period=0), method="ML")
@@ -69,14 +87,13 @@ for(i in 1:length(in_ts)){
     cnt = cnt + 1
   }
 }
+print("In-Sample SMAPE:")
 print(200 * sum/cnt)
 
-summary(in_sample_model)
+#for (i in 1:length(fitted_values)){
+  #print(fitted_values[i])
+#}
 
-for (i in 1:length(fitted_values)){
-  print(fitted_values[i])
-}
-
-for (i in 1:length(in_ts)){
-  print(in_ts[i])
-}
+#for (i in 1:length(in_ts)){
+  #print(in_ts[i])
+#}
