@@ -50,5 +50,7 @@ This repository contains daily time series data of two years about COVID-19 in t
 | `new_people_vaccinated_smoothed`             | Daily number of people receiving their first vaccine dose (7-day smoothed)      |                                                                                                                                                                                                                                                                  |
                                                                                                                                   
 ### Others
-| Variable                     | Description              |                                                                                                                       
-| `date`                       | Date of observation                                                                                                                                                                                                                        |                            
+| Variable                         | Description                                                           |
+|:---------------------------------|:----------------------------------------------------------------------|
+| `date`                    | Date of observation                                    |
+                     
