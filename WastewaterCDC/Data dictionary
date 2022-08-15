@@ -1,4 +1,0 @@
-## Regression Datasets
-|Name|#rows|#attrs|Size|Description|Path|
-|----|------|-----|---------|-----|----|
-|auto-mpg|392|8|0.02MB|Auto-MPG Dataset from UCI|analytics/regression/auto_mpg.csv|
