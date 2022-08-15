@@ -1,6 +1,6 @@
 ## Data Dictionary
 
-| **Column Name** | **Description** |
+|Column Name|Description|
 | --- | --- |
 | wwtp\_jurisdiction | State, DC, US territory, or Freely Associated State jurisdiction name (2-letter abbreviation) in which the wastewater treatment plant provided in 'wwtp\_id' is located. |
 | wwtp\_id | A unique identifier for wastewater treatment plants. This is an arbitrary integer used to provide a unique, but anonymous identifier for a wastewater treatment plant. This identifier is consistent over time, such that the same plant retains the same ID regardless of the addition or subtraction of other plants from the data set. |
