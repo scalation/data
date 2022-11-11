@@ -51,6 +51,8 @@ def generate_csv_file(src="./temp", dest="../"):
     final_df = final_df[columns]
     
     final_df = final_df.sort_values(by=['State', 'Date'])
+    final_df['daily_deaths'] = final_df.groupby(['State'])['Deaths'].diff()
+    
     final_df = final_df.set_index('Date')
 
     date = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
