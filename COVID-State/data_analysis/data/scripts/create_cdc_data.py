@@ -5,6 +5,10 @@ from urllib.request import urlretrieve
 import requests
 import pandas as pd
 
+import sys
+sys.path.append('../../')
+from utils import get_rolling_average
+
 def delete_file(path):
     if os.path.exists(path):
         os.remove(path)
@@ -25,6 +29,9 @@ def download_data(dest_path='../'):
 
     df = df.sort_values(by=['State', 'Date'])
     df = df.set_index('Date')
+
+    df['rolling_deaths_3'] = get_rolling_average(df, 'new_death', 3)
+    df['rolling_deaths_7'] = get_rolling_average(df, 'new_death', 7)
 
     date = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
     df.to_csv(os.path.join(dest_path, f"cdc_{date}.csv"))

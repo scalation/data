@@ -7,6 +7,10 @@ import subprocess
 import pandas as pd
 from tqdm import tqdm
 
+import sys
+sys.path.append('../../')
+from utils import get_rolling_average
+
 def git(*args):
     return subprocess.check_call(['git'] + list(args))
 
@@ -52,7 +56,10 @@ def generate_csv_file(src="./temp", dest="../"):
     
     final_df = final_df.sort_values(by=['State', 'Date'])
     final_df['daily_deaths'] = final_df.groupby(['State'])['Deaths'].diff()
-    
+
+    final_df['rolling_deaths_3'] = get_rolling_average(final_df, 'daily_deaths', 3)
+    final_df['rolling_deaths_7'] = get_rolling_average(final_df, 'daily_deaths', 7)
+
     final_df = final_df.set_index('Date')
 
     date = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")

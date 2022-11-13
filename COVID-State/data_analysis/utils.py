@@ -33,3 +33,6 @@ def get_common_data(cdc, jhu):
     new_cdc = f(cdc, jhu)
     new_jhu = f(jhu, cdc)
     return new_cdc, new_jhu
+
+def get_rolling_average(df, col, window_size, state_col='State'):
+    return df.groupby(state_col)[col].transform(lambda x: x.rolling(window_size, 1).mean())
