@@ -66,3 +66,25 @@ def get_rolling_average(df, col, window_size, state_col='State'):
                 avg.append(rolling_sum / window_size)
     
     return avg
+
+def get_state_dfs(cdc, jhu, cdc_state_col='State', jhu_state_col='State'):
+    states = list(cdc[cdc_state_col].unique())
+    dfs = []
+    
+    for state in states:
+        cdc_state = cdc[cdc[cdc_state_col] == state]
+        jhu_state = jhu[jhu[jhu_state_col] == state]
+        dfs.append((state, cdc_state, jhu_state))
+    
+    return dfs
+
+def get_diff_list(cdc, cdc_col, jhu, jhu_col, start_ind=0, cdc_date_col='Date'):
+    diff = list(cdc[cdc_col] - jhu[jhu_col])
+    diff = diff[start_ind:]
+
+    dates = list(cdc[cdc_date_col])
+    dates = dates[start_ind:]
+
+    df = pd.DataFrame(list(zip(dates, diff)), columns=['Date', 'Diff'])
+    df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d')
+    return df
