@@ -28,13 +28,13 @@ def download_data(dest_path='../'):
     df = df[~df['State'].isin(remove_states)]
 
     df = df.sort_values(by=['State', 'Date'])
-    df = df.set_index('Date')
+    df = df.reset_index(drop=True)
 
     df['rolling_deaths_3'] = get_rolling_average(df, 'new_death', 3)
     df['rolling_deaths_7'] = get_rolling_average(df, 'new_death', 7)
 
     date = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-    df.to_csv(os.path.join(dest_path, f"cdc_{date}.csv"))
+    df.to_csv(os.path.join(dest_path, f"cdc_{date}.csv"), index=False)
 
     delete_file(temp_file)
 

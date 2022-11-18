@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 
 def print_start_end_dates(cdc, jhu):
@@ -35,4 +36,33 @@ def get_common_data(cdc, jhu):
     return new_cdc, new_jhu
 
 def get_rolling_average(df, col, window_size, state_col='State'):
-    return df.groupby(state_col)[col].transform(lambda x: x.rolling(window_size, 1).mean())
+    curr_state = ''
+    rolling_sum = 0
+    rolling_length = 0
+    avg = []
+
+    for i, row in df.iterrows():
+        state = row[state_col]
+        if state != curr_state:
+            curr_state = state
+            rolling_sum = row[col]
+            
+            if np.isnan(rolling_sum):
+                curr_state = ''
+            else:
+                rolling_length = 1
+            avg.append(None)
+        else:
+            if rolling_length <= window_size:
+                rolling_sum += row[col]
+                rolling_length += 1
+                
+                if rolling_length < window_size:
+                    avg.append(None)
+                else:
+                    avg.append(rolling_sum / window_size)
+            else:
+                rolling_sum += row[col] - df[col][i-window_size]
+                avg.append(rolling_sum / window_size)
+    
+    return avg
