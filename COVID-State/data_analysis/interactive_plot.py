@@ -9,6 +9,7 @@ import utils
 
 cdc = pd.read_csv('./data/cdc_2022-11-18-05-12-04.csv')
 jhu = pd.read_csv('./data/jhu_2022-11-18-05-14-54.csv')
+# jhu = pd.read_csv('./data/jhu_with_cdc_start.csv')
 
 type_data = {
     'running_avg_1': ('new_death', 'daily_deaths'),
@@ -105,6 +106,7 @@ def update_graph(type_value):
 
     return out
 
+l = []
 def update(hover_data, figure, type_value):
     state = figure['layout']['title']['text']
     df_cdc, df_jhu = state_df_dict[state]
@@ -115,7 +117,9 @@ def update(hover_data, figure, type_value):
     if hover_data is None:
         diff = utils.get_diff_list(df_cdc, cdc_col, df_jhu, jhu_col, 1)
 
-        max_diff_index = diff['Diff'].idxmax()
+        diff['abs'] = diff['Diff'].abs()
+        print(state, diff['abs'].max().item())
+        max_diff_index = diff['abs'].idxmax()
     else:
         max_diff_index = hover_data['points'][0]['pointIndex'] + 1
 
