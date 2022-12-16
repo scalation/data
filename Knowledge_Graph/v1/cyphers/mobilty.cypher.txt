@@ -1,0 +1,18 @@
+:auto USING PERIODIC COMMIT
+LOAD CSV WITH HEADERS 
+FROM 'FILE:///mobility_state.csv' AS row 
+MERGE (c:Mobility{id: 'Mobility' + row.date + '-' + row.iso_3166_2_code})
+SET c.name = 'Mobility' + row.date, c.date = date(row.date), 
+c.state_name = row.sub_region_1, row.c.retail_and_recreation_percent_change_from_baseline = toInteger(row.retail_and_recreation_percent_change_from_baseline), c.grocery_and_pharmacy_percent_change_from_baseline = toInteger(row.grocery_and_pharmacy_percent_change_from_baseline), c.parks_percent_change_from_baseline = toInteger(row.parks_percent_change_from_baseline), 
+c.transit_stations_percent_change_from_baseline = toInteger(row.transit_stations_percent_change_from_baseline), c.workplaces_percent_change_from_baseline = toInteger(row.workplaces_percent_change_from_baseline), c.residential_percent_change_from_baseline = toInteger(row.residential_percent_change_from_baseline),
+c.source = 'Google'
+RETURN count(c) as MOBILITY
+;
+:auto USING PERIODIC COMMIT
+LOAD CSV WITH HEADERS 
+FROM 'FILE:///mobility_state.csv' AS row
+MATCH (c:Mobility{id: 'Mobility' + row.date + '-' + row.iso_3166_2_code})
+MATCH (a:State{name: row.sub_region_1})
+MERGE (c)-[r:HAS_MOBILITY]->(a)
+RETURN count(r) as HAS_MOBILITY
+;

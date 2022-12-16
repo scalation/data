@@ -1,0 +1,5 @@
+MATCH (c1:State)-[:IN]->(:Country { name: "United States" })<-[:IN]-
+(c2:State)
+WHERE id(c1) < id(c2)
+CREATE (c1)-[r:PATH { distance: point.distance(c1.location, c2.location) }]->(c2)
+RETURN count(r);

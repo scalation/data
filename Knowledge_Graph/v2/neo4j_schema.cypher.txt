@@ -1,0 +1,10 @@
+CREATE (n:Country)<-[:IN]-(m:State)-[:POSITIVE_CASES]->(p:HealthStatistic);
+MERGE (p:HealthStatistic)<-[:HOSPITALIZATIONS]-(h:Hospital);
+MERGE (p:State)-[:NEXT_TO]->(q:State);
+MERGE (p:State)-[:CHARACTERIZED_BY]->(q:Demographic);
+MERGE (p:State)-[:MANDATES]->(q:NPI);
+MERGE (p:HealthStatistic)<-[:ICU]-(h:Hospital);
+MERGE(m:State)-[:DEATHS]->(p:HealthStatistic);
+MERGE(m:Date)<-[:REPORTED_AT]-(p:HealthStatistic);
+MERGE (p:State)-[:MOBILITY]->(q:State);
+MERGE(m:State)-[:VACCINATION]->(p:HealthStatistic);
