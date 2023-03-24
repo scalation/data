@@ -13,6 +13,7 @@ us_df.reset_index()
 # filter data till a given date
 us_df['date'] = pd.to_datetime(us_df['date']) 
 date_cutoff = pd.to_datetime('2022-10-20')
-df_till_cutoff = us_df.loc[us_df['date'] <= date_cutoff]
 dt_string = date_cutoff.strftime("%Y-%m-%d")
+df_till_cutoff = us_df.loc[us_df['date'] <= date_cutoff]
+df_till_cutoff = df_till_cutoff.fillna(0)
 df_till_cutoff.to_csv(f"OWID_daily_till_{dt_string}.csv")
