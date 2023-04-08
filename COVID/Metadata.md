@@ -1,6 +1,6 @@
 ## Introduction:  
 
-This repository contains daily time series data of about three years from 1/03/2020 to 10/20/2022 about COVID-19 in the United States. All data is read from **Our World in Data** (https://covid.ourworldindata.org/data/owid-covid-data.csv). They switched from a daily to a weekly reporting schedule from 10/22.2022 (Sunday through Saturday), and so the data will be updated on a weekly basis. The meta-data for the data set is provided in the following:
+This repository contains daily time series data of about three years from 1/03/2020 to 10/20/2022 about COVID-19 in the United States. All data is read from **Our World in Data** (https://covid.ourworldindata.org/data/owid-covid-data.csv). They switched from a daily to a weekly reporting schedule from 10/22/2022 (Sunday through Saturday), and so the data will be updated on a weekly basis. The meta-data for the data set is provided in the following:
 
 ## Meta-Data:  
 
