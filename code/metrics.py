@@ -1,3 +1,6 @@
+import numpy as np
+import pandas as pd
+
 """
 metrics: 
     A module for evaulating the quality/goodness of fit
@@ -30,10 +33,6 @@ rmse:
 def smape(y: np.ndarray, y_pred: np.ndarray) -> float:
     """ 
     A function to calculate the symmetric mean absolute percentage error (sMAPE).
-    
-    Required Imports
-    ----------
-    import numpy as np
 
     Arguments
     ----------
@@ -93,10 +92,6 @@ def sst(y: np.ndarray) - > float:
 def sse(y: np.ndarray, y_pred: np.ndarray) -> float:
     """ 
     A function to calculate the sum of squared errors (SSE).
-    
-    Required Imports
-    ----------
-    import numpy as np
 
     Arguments
     ----------
