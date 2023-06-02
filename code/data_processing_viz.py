@@ -1,10 +1,8 @@
+import pandas as pd
+
 def data_processing_viz(data_file:str, columns:list[str], skip:int=0, date:str='date') -> pd.DataFrame:
     """
     A function used for data processing and visualization
-    
-    Required Imports
-    ----------
-    import pandas as pd
 
     Arguments
     ----------
