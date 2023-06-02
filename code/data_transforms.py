@@ -1,3 +1,6 @@
+import pandas as pd
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+
 """
 data_transforms: 
     A module for transforming data
@@ -16,10 +19,6 @@ def data_transform_std(df: pd.DataFrame, test_ratio: float = 0.7):
     A function used for data transformation to make sure it's 
     in the sensitive active region of the activation function
     by substracting the mean and dividing by the standard deviation
-    
-    Required Imports
-    ----------
-    import pandas as pd
 
     Arguments
     ----------
@@ -48,10 +47,6 @@ def data_transform_minmax(df: pd.DataFrame, test_ratio: float = 0.7, min_: float
     A function used for data transformation to make sure it's 
     in the sensitive active region of the activation function
     by rescaling the data to be between min_ and max_
-    
-    Required Imports
-    ----------
-    import pandas as pd
 
     Arguments
     ----------
