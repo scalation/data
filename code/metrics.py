@@ -151,4 +151,4 @@ def rmse(y: np.ndarray, y_pred: np.ndarray) -> float:
     RMSE : float
 
     """   
-    return np.sqrt(mse((y, y_pred))
+    return np.sqrt(mse((y, y_pred)))
