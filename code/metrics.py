@@ -66,7 +66,7 @@ def mae(y: np.ndarray, y_pred: np.ndarray) -> float:
     """   
     return np.sum(np.abs(y-y_pred))/len(y)
 
-def sst(y: np.ndarray) - > float:
+def sst(y: np.ndarray) -> float:
     """ 
     A function to calculate the sum of squares total (SST).
 
