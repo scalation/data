@@ -51,10 +51,6 @@ def smape(y: np.ndarray, y_pred: np.ndarray) -> float:
 def mae(y: np.ndarray, y_pred: np.ndarray) -> float:
     """ 
     A function to calculate the mean absolute error (MAE).
-    
-    Required Imports
-    ----------
-    import numpy as np
 
     Arguments
     ----------
@@ -73,10 +69,6 @@ def mae(y: np.ndarray, y_pred: np.ndarray) -> float:
 def sst(y: np.ndarray) - > float:
     """ 
     A function to calculate the sum of squares total (SST).
-    
-    Required Imports
-    ----------
-    import numpy as np
 
     Arguments
     ----------
@@ -110,10 +102,6 @@ def sse(y: np.ndarray, y_pred: np.ndarray) -> float:
 def r2(y: np.ndarray, y_pred: np.ndarray) -> float:
     """ 
     A function to calculate R squared (r2).
-    
-    Required Imports
-    ----------
-    import numpy as np
 
     Arguments
     ----------
@@ -132,10 +120,6 @@ def r2(y: np.ndarray, y_pred: np.ndarray) -> float:
 def mse(y: np.ndarray, y_pred: np.ndarray) -> float:
     """ 
     A function to calculate mean squared error (MSE).
-    
-    Required Imports
-    ----------
-    import numpy as np
 
     Arguments
     ----------
@@ -154,10 +138,6 @@ def mse(y: np.ndarray, y_pred: np.ndarray) -> float:
 def rmse(y: np.ndarray, y_pred: np.ndarray) -> float:
     """ 
     A function to calculate root mean squared error (RMSE).
-    
-    Required Imports
-    ----------
-    import numpy as np
 
     Arguments
     ----------
