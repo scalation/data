@@ -1,3 +1,4 @@
+import pandas as pd
 def make_3d_tensors(df: pd.DataFrame, lags: int = 1, h: int = 1):  
     """
     Let the number of lags of your model be p and let the number for 
