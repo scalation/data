@@ -1,5 +1,6 @@
 import sklearn.model_selection as sk
-def train_test_split(x: np.ndarray, y: np.ndarray, test_ratio: float = 0.25):    
+def train_test_split(x: np.ndarray, y: np.ndarray, test_ratio: float = 0.25) -> (np.ndarray, np.ndarray, np.ndarray, np.ndarray):
+    
     """ 
     A function used for splitting the data into fixed train and test sets.
     Usually, for time series, it is better to use a rolling window.
