@@ -1,4 +1,15 @@
 import sklearn.model_selection as sk
+
+"""
+data_splitting: 
+    A module for splitting data.
+
+Functions
+----------
+train_test_split: 
+    def train_test_split(x: np.ndarray, y: np.ndarray, test_ratio: float = 0.25) -> (np.ndarray, np.ndarray, np.ndarray, np.ndarray):
+"""
+
 def train_test_split(x: np.ndarray, y: np.ndarray, test_ratio: float = 0.25) -> (np.ndarray, np.ndarray, np.ndarray, np.ndarray):
     
     """ 
