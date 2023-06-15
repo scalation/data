@@ -6,12 +6,12 @@ rolling_window:
 Functions
 ----------
 daily_rolling_window: 
-    def daily_rolling_window(model:str,df: pd.DataFrame, h: int = 14, date:str='date'):
+    def daily_rolling_window(model:str, df: pd.DataFrame, h: int = 14, date:str='date'):
     
 weekly_rolling_window:
-    def weekly_rolling_window(model:str,df: pd.DataFrame, h: int = 4, date:str='date'):
+    def weekly_rolling_window(model:str, df: pd.DataFrame, h: int = 4, date:str='date'):
 """
-def daily_rolling_window(model:str,df: pd.DataFrame, h: int = 14, date:str='date') -> pd.DataFrame:
+def daily_rolling_window(model:str, df: pd.DataFrame, h: int = 14, date:str='date') -> pd.DataFrame:
     """
     A function used for displaying 14-days ahead predictions on a rolling window basis
 
@@ -55,7 +55,7 @@ def daily_rolling_window(model:str,df: pd.DataFrame, h: int = 14, date:str='date
     daily = daily_predictions
     return daily
 
-def weekly_rolling_window(model:str,df: pd.DataFrame, h: int = 4, date:str='date') -> pd.DataFrame:
+def weekly_rolling_window(model:str ,df: pd.DataFrame, h: int = 4, date:str='date') -> pd.DataFrame:
     """
     A function used for displaying 4 weeks ahead predictions on a rolling window basis
 
