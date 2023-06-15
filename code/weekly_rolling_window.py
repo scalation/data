@@ -1,19 +1,21 @@
+import pandas as pd
+
 def weekly_rolling_window_df(df: pd.DataFrame, h: int = 4, model:str) -> pd.DataFrame:
       """
     A function used for displaying weekly predictions on a rolling window basis
 
     Arguments
     ----------
-    df : pd.DataFrame
-        the weekly forecasted data merged according to dates
-    h : int
+    df: pd.DataFrame
+        the weekly forecasted data merged according to the dates
+    h: int
         the future horizons
-    model : str
+    model: str
         the name of the model
 
     Returned Values
     ----------
-    weekly : pd.DataFrame
+    weekly: pd.DataFrame
 
     """
 
