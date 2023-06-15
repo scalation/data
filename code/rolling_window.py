@@ -47,17 +47,17 @@ def daily_rolling_window(model:str, df: pd.DataFrame, h: int = 14, date:str='dat
         window = window + 1
         start = end
         end = end+1
-    daily_predictions = pd.DataFrame(daily_pred, columns=[ 'Date',str('day14_'+model),str('day13_'+model),str('day12_'+model),str('day11_'+model)
-                                                            ,str('day10_'+model),str('day9_'+model),str('day8_'+model),str('day7_'+model)
-                                                            ,str('day6_'+model),str('day5_'+model),str('day4_'+model),str('day3_'+model),
-                                                             str('day2_'+model),str('day1_'+model)])
+    daily_predictions = pd.DataFrame(daily_pred, columns=[ 'Date',str('day14_'+model),str('day13_'+model),str('day12_'+model),str('day11_'+model),
+                                                            str('day10_'+model),str('day9_'+model),str('day8_'+model),str('day7_'+model),
+                                                            str('day6_'+model),str('day5_'+model),str('day4_'+model),str('day3_'+model),
+                                                            str('day2_'+model),str('day1_'+model)])
     daily_predictions['Date'] = pd.to_datetime(daily_predictions['Date'])
     daily = daily_predictions
     return daily
 
 def weekly_rolling_window(model:str ,df: pd.DataFrame, h: int = 4, date:str='date') -> pd.DataFrame:
     """
-    A function used for displaying 4 weeks ahead predictions on a rolling window basis
+    A function used for displaying 4-weeks ahead predictions on a rolling window basis
 
     Arguments
     ----------
@@ -86,9 +86,8 @@ def weekly_rolling_window(model:str ,df: pd.DataFrame, h: int = 4, date:str='dat
         window = window + 1
         start = end
         end = end+1
-    weekly_predictions = pd.DataFrame(weekly_pred, columns=[ 'Date',str('week4_'+model),str('week3_'+model),
-                                                                  str('week2_'+model),
-                                                                  str('week1_'+model)])
+    weekly_predictions = pd.DataFrame(weekly_pred, columns=[ 'Date',str('week4_'+model),str('week3_'+model),str('week2_'+model),
+                                                            str('week1_'+model)])
     weekly_predictions['Date'] = pd.to_datetime(weekly_predictions['Date'])
     weekly = weekly_predictions
     return weekly
