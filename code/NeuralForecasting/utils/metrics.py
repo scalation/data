@@ -28,6 +28,9 @@ mse:
 
 rmse:
     def rmse(y: np.ndarray, y_pred: np.ndarray) -> float:
+
+rae:
+    def rae(y: np.ndarray, y_pred: np.ndarray) -> float:
 """
 
 def smape(y: np.ndarray, y_pred: np.ndarray) -> float:
@@ -152,3 +155,26 @@ def rmse(y: np.ndarray, y_pred: np.ndarray) -> float:
 
     """   
     return np.sqrt(mse((y, y_pred)))
+
+def rae(y: np.ndarray, y_pred: np.ndarray) -> float:
+    """ 
+    A function to calculate relative absolute error (RAE).
+
+    Arguments
+    ----------
+    y: np.ndarray
+        the response data
+    y_pred: np.ndarray
+        the predicted/forecasted outputs
+        
+    Returned Values
+    ----------
+    RAE : float
+
+    """  
+    y_mean = np.mean(y)
+    squared_error_num = np.sum(np.abs(y - y_pred))
+    squared_error_den = np.sum(np.abs(y - y_mean))
+    rae_loss = squared_error_num / squared_error_den
+    
+    return rae_loss
