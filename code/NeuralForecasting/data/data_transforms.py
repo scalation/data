@@ -13,7 +13,7 @@ data_transform_std:
 data_transform_minmax
     def data_transform_minmax(df: pd.DataFrame, test_ratio: float = 0.7, min_: float = 0, max_: float = 1):
 """
-def data_transform_std(df: pd.DataFrame, test_ratio: float = 0.7):
+def data_transform_std(df: pd.DataFrame, train_size: float):
     
     """
     A function used for data transformation to make sure it's 
@@ -29,21 +29,21 @@ def data_transform_std(df: pd.DataFrame, test_ratio: float = 0.7):
         
     Returned Values
     ----------
-    scalers : dict
+    scaled_mean_std : dict
 
     """ 
-    scalers={}
+    scaled_mean_std={}
     for i in range(0, len(df.columns)):
         if (i == 0):
             continue
-        scaler = StandardScaler()
-        scaler.fit(df.iloc[0:round(test_ratio*df.shape[0]), i].values.reshape(-1, 1))
-        rescaled = scaler.transform(df.iloc[:, i].values.reshape(-1, 1))
-        scalers['scaler_' + df.columns[i]] = scaler
-        df.iloc[:, i] = pd.DataFrame(rescaled)
-    return scalers, df 
+        scaled = StandardScaler()
+        scaled.fit(df.iloc[0:train_size, i].values.reshape(-1, 1))
+        transformed = scaled.transform(df.iloc[:, i].values.reshape(-1, 1))
+        scaled_mean_std['scaled' + df.columns[i]] = scaled
+        df.iloc[:, i] = pd.DataFrame(transformed)
+    return scaled_mean_std, df 
 
-def data_transform_minmax(df: pd.DataFrame, test_ratio: float = 0.7, min_: float = 0, max_: float = 1):
+def data_transform_minmax(df: pd.DataFrame, train_size: float, min_: float = 0, max_: float = 1):
     
     """
     A function used for data transformation to make sure it's 
@@ -59,7 +59,7 @@ def data_transform_minmax(df: pd.DataFrame, test_ratio: float = 0.7, min_: float
         
     Returned Values
     ----------
-    scalers : dict
+    scaled_mean_std : dict
 
     """ 
     scalers={}
@@ -67,7 +67,7 @@ def data_transform_minmax(df: pd.DataFrame, test_ratio: float = 0.7, min_: float
         if (i == 0):
             continue
         scaler = MinMaxScaler(feature_range=(min_, max_))
-        scaler.fit(df.iloc[0:round(test_ratio*df.shape[0]), i].values.reshape(-1, 1))
+        scaler.fit(df.iloc[0:train_size, i].values.reshape(-1, 1))
         rescaled = scaler.transform(df.iloc[:, i].values.reshape(-1, 1))
         scalers['scaler_' + df.columns[i]] = scaler
         df.iloc[:, i] = pd.DataFrame(rescaled)
