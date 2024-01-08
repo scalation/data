@@ -33,7 +33,7 @@ def load_data(data_file: str, columns, skip: int = 0, sort: bool = False, date: 
     observed = data[[date, target]]
     return data, observed
 
-def plot_data(data: DataFrame):
+def plot_data(data: pd.DataFrame):
         """
     A function used for plotting the data
 
