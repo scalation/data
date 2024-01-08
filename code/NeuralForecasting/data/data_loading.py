@@ -1,6 +1,6 @@
 import pandas as pd
 
-def load_data(data_file: str, columns, skip: int = 0, sort: bool = False, date: str = 'date', target: str = 'target') -> pd.DataFrame:
+def load_data(data_file: str, columns = None, skip: int = 0, sort: bool = False, date: str = 'date', target: str = 'target') -> pd.DataFrame:
     """
     A function used for loading the data file and selecting features for training 
 
@@ -29,12 +29,14 @@ def load_data(data_file: str, columns, skip: int = 0, sort: bool = False, date: 
     data.reset_index(inplace = True, drop = True) 
     if sort:
         data = data.sort_values(by = date)            #sort by date just to make sure
+    if columns is None:
+        columns = data.columns
     data = data[columns]                              #keep the column you want
     observed = data[[date, target]]
     return data, observed
 
 def plot_data(data: pd.DataFrame):
-        """
+    """
     A function used for plotting the data
 
     Arguments
