@@ -83,3 +83,12 @@ def shift_sequence(x_train, y_train, x_test, y_test, window, include_dates):
         return x_train, x_test, y_train, y_test
     else:
         return torch.from_numpy(x_train).to(device).float(), x_test.to(device).float(), torch.from_numpy(y_train).to(device).float(), y_test.to(device).float()
+
+def train_test_split(data: pd.DataFrame, train_ratio: float = 0.8, val_ratio: float = 0) -> (pd.DataFrame, pd.DataFrame, pd.DataFrame):
+    tr_size = int(data.shape[0]*train_ratio)
+    val_size = int(data.shape[0]*val_ratio)
+    
+    train_data = data.iloc[0:tr_size]
+    val_data = data.iloc[tr_size:tr_size+val_size]
+    test_data = data.iloc[tr_size+val_size:]
+    return train_data, val_data, test_data
