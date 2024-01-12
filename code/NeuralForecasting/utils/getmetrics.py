@@ -1,3 +1,5 @@
+import numpy as np
+from utils.metrics import mse, mae, smape
 def getmetrics(actual: np.array, forecasts: np.array) -> (float, float, float):
     """
     A function used for returning the MSE, MAE, sMAPE metrics.
