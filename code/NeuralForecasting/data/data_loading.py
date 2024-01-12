@@ -50,9 +50,13 @@ def plot_data(data: pd.DataFrame):
     """
     return data.plot(subplots = True, figsize = (10, 12))
 
-def plot_train_test(df_raw_scaled: pd.DataFrame,train_size:  float, train: pd.DataFrame, test: pd.DataFrame, forecasts: pd.DataFrame = None) -> None:
-    plt.plot(train, color='blue')
-    plt.plot(test, color='red')
+def plot_train_test(df_raw_scaled: pd.DataFrame, main_output: str, train_size:  float, train: pd.DataFrame, test: pd.DataFrame, forecasts: pd.DataFrame = None) -> None:
+    plt.plot(train, color='red', label='Observed Train')
+    plt.plot(test, color='blue', label='Observed Test')
     if forecasts is not None:
         idx = np.arange(train_size+24, df_raw_scaled.shape[0], 1)
-        plt.plot(idx, forecasts, color='orange')
+        plt.plot(idx, forecasts, color='orange', label='Forecasts')
+    plt.ticklabel_format(style='plain')
+    plt.title('Random Walk - ' + main_output)
+    plt.legend()
+    plt.show()
