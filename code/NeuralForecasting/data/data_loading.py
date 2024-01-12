@@ -1,5 +1,6 @@
 import pandas as pd
-
+import matplotlib.pyplot as plt
+import numpy as np
 def load_data(data_file: str, columns = None, skip: int = 0, sort: bool = False, date: str = 'date', main_output: str = 'main_output') -> pd.DataFrame:
     """
     A function used for loading the data file and selecting features for training 
@@ -32,8 +33,7 @@ def load_data(data_file: str, columns = None, skip: int = 0, sort: bool = False,
     if columns is None:
         columns = data.columns
     data = data[columns]                              #keep the column you want
-    observed = data[[date, target]]
-    return data, observed
+    return data
 
 def plot_data(data: pd.DataFrame):
     """
