@@ -1,6 +1,6 @@
 import pandas as pd
 
-def load_data(data_file: str, columns = None, skip: int = 0, sort: bool = False, date: str = 'date', target: str = 'target') -> pd.DataFrame:
+def load_data(data_file: str, columns = None, skip: int = 0, sort: bool = False, date: str = 'date', main_output: str = 'main_output') -> pd.DataFrame:
     """
     A function used for loading the data file and selecting features for training 
 
@@ -14,8 +14,8 @@ def load_data(data_file: str, columns = None, skip: int = 0, sort: bool = False,
         ignore the first skip rows
     date: str
         the name of the date/time column 
-    target: str
-        the name of the main target column for evaluation e.g. new_deaths for the COVID dataset
+    main_output: str
+        the name of the main output column for evaluation e.g. new_deaths for the COVID dataset
            
     Returned Values
     ----------
