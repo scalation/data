@@ -8,7 +8,7 @@ def getmetrics(main_output: str, actual: np.array, forecasts: np.array) -> (floa
         the name of the main output feature for evaluation
     actual: np.array
         the observed test set values aligned with the forecasts
-    forecasts: np.array
+    forecasts: np.array | List[floats]
         the output from a forecasting model, i.e. RandomWalk
            
     Returned Values
