@@ -6,7 +6,7 @@ from data.data_splitting import train_test_split
 from utils.metrics import mse, mae, smape
 from utils.getmetrics import getmetrics
 
-def RandomWalk(file_name: str, training_ratio: float, horizon: int, main_output: str, normalization: bool) -> None:
+def RandomWalk(file_name: str, training_ratio: float, horizon: int, main_output: str, normalization: bool) -> (int, float, float, float):
     """
     A function used for producing forecasts based on the Random Walk model that simply projects a current value into the future (yhat[t] = y[t-h]).
     
