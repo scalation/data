@@ -36,14 +36,14 @@ def RandomWalk(file_name: str, training_ratio: float, horizon: int, main_output:
     if normalization:
         scaled_mean_std, data = data_transform_std(data, train_size)
 
-    train_data, val_data, test_data = train_test_split(data, train_ratio=training_ratio)    # No validation data for Random Walk.
-    print(len(train_data), len(test_data))
+    train_data, val_data, test_data = train_test_split(data, train_ratio = training_ratio)    # No validation data for Random Walk.   
     train_data_MO = train_data[[main_output]]                   # Train set for main output column.
     test_data_MO = test_data[[main_output]]                     # Test set for main output column.
     actual = data[[main_output]]                                # Actual complete dataset for main output.
     forecasts = []
     for i in range(len(test_data_MO) - horizon):
         forecasts.append(actual.iloc[train_size + i - 1,:])     # For Random Walk, start with the last value from the training set.
+
     actual = actual[train_size + horizon:]                      # Aligning actual with forecasts so both have the same length.
     actual = np.array(actual)                                   # Convert actual a numpy array
 
