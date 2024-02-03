@@ -42,7 +42,7 @@ def RandomWalk(file_name: str, training_ratio: float, horizon: int, main_output:
     actual = data[[main_output]]                                # Actual complete dataset for main output.
     forecasts = []
     for i in range(len(test_data_MO) - horizon):
-        forecasts.append(actual.iloc[train_size + i - 1,:])     # For Random Walk, start with the last value from the training set.
+        forecasts.append(actual.iloc[train_size + i,:])     # For Random Walk, start with the last value from the training set.
 
     actual = actual[train_size + horizon:]                      # Aligning actual with forecasts so both have the same length.
     actual = np.array(actual)                                   # Convert actual a numpy array
