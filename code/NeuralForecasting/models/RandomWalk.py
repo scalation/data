@@ -30,7 +30,7 @@ def RandomWalk(file_name: str, training_ratio: float, horizon: int, main_output:
     smape: float
 
     """
-    
+    horizon = horizon - 1
     data = load_data(file_name, main_output = main_output)
     train_size = int(training_ratio*len(data))
     if normalization:
